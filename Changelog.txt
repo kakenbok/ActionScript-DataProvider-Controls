@@ -44,6 +44,8 @@ Version 0.4.0 - 2011-05-20
 
 Preview 3 SVN (revision 30) - 2010-04-14
 
+- [DEV] Update to AS3Commons Collections 1.3.0
+
 - [DEV] Update to the ASCommons Collections library which is the further development of the formerly used Lite Collections Fx.
 
 - [DEV] Further development of the beta component ScrollPane.
