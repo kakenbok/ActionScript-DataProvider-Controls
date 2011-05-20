@@ -1,0 +1,63 @@
+Version 0.4.0 - 2011-05-20
+
+- [DEV] Added style Window.style.minimiseOnDoubleClick = true
+
+- [DEV] Aligned to support Flex 4 compiler. Warning issue (@google.code) solved.
+
+- [DEV] Added possibility to turn a modal pop up window into a normal one (PopUpManager)
+
+- [DEV] ScrollTrackSkin raster property. If set to false, the track is drawn with a solid rect.
+
+- [DEV] TextField now supports the styles letterSpacing and antiAliasType
+
+- [DEV] SelectBox with more customization possibilities
+
+- [DEV] mouseEnabled & mouseChildren added to IDisplayObject and IDisplayObjectContainer
+
+- [DEV] Added event to SelectBox which was only to be listened using binding.
+
+- [DEV] Added ability to use embedded fonts with Label and TextField (Label.style.embedFont : Boolean)
+
+- [DEV] Added tooltips to list and selectbox which are shown if the displayed label has been chopped.
+
+- [DEV] Setting data source of a SelectBox at runtime.
+
+- [DEV] Default text for TextInput 
+
+- [BUG] ColorPicker PopUp position wrong in small movies
+
+- [BUG] ColorPicker PopUp position wrong in small movies
+
+- [BUG] Unnecessary variable declaration in PopUpManager
+
+- [BUG] PinBar threw error on double click
+
+- [BUG] Minimised Window not longer scaled to 0x0 since this caused issues with embedded fonts not being able to calculate valid dimensions
+
+- [BUG] Border and background did not resize when resizing a TextInput.
+
+- [BUG] Issue 2: Tooltip does not work when not compiling with --target-player=10.0.0.
+
+- [BUG] Issue 1: Scrolling in list (or tree) using scrollbar thumb jitters
+
+
+
+Preview 3 SVN (revision 30) - 2010-04-14
+
+- [DEV] Update to the ASCommons Collections library which is the further development of the formerly used Lite Collections Fx.
+
+- [DEV] Further development of the beta component ScrollPane.
+
+- [BUG] ListItemRenderer did not call IListItemContent::drawContent when initializing
+
+- [BUG] Binding a RadioGroup did fail if the buttons were already set
+
+- [BUG] ScrollBar did not adjust the scroll position if the document size did change to a lesser size
+
+- [BUG] ScrollPane.style.vScrollBar and ScrollPane.style.hScrollBar did not work at all. Both scrollbars could not be hidden using those properties.
+
+
+
+Preview 2 SVN (revision 19) - 2010-02-04
+
+- [DEV] Initial release
