@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../../override.css" type="text/css"><meta name="keywords" content="ListItemRendererEvent,com.sibirjak.asdpc.listview.core.ListItemRendererEvent,DATA_CHANGED,DATA_PROPERTY_CHANGED,LIST_INDEX_CHANGED,ROLL_OUT,ROLL_OVER,SELECTION_CHANGED,VISIBILITY_CHANGED,_isFirst,_isLast,_listItemData,_listView,_visibleRenderers,data,firstIndex,firstVisibleIndex,indices,isFirst,isLast,item,itemIndex,itemKey,listIndex,listItemData,parentItem,poolSize,selected"><title>com.sibirjak.asdpc.listview.core.ListItemRendererEvent</title></head><body><script language="javascript" type="text/javascript" src="../../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+				asdocTitle = 'ListItemRendererEvent - ActionScript DataProvider Controls 0.4.0';
+				var baseRef = '../../../../../';
+				window.onload = configPage;
+			--></script>
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../../package-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../../class-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../../all-index-A.html" onclick="loadClassListFrame('../../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../../index.html?com/sibirjak/asdpc/listview/core/ListItemRendererEvent.html&amp;com/sibirjak/asdpc/listview/core/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">ListItemRendererEvent</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#methodSummary">Methods</a>&nbsp;| <a href="#constantSummary">Constants</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("ListItemRendererEvent"); titleBar_setSubNav(true,false,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">com.sibirjak.asdpc.listview.core</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  ListItemRendererEvent</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">ListItemRendererEvent  <img src="../../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> flash.events.Event</td></tr><tr><td class="classHeaderTableLabel">Subclasses</td><td> <a href="../../../../../com/sibirjak/asdpc/treeview/core/TreeNodeRendererEvent.html">TreeNodeRendererEvent</a></td></tr></table><p></p><p></p><p></p>
+	 ListItemRenderer event.
+	 
+	 <p>A ListItemRendererEvent is a ListView internal event and only available
+	 to IListItemRenderers and their children. The ListItemRendererEvent is
+	 dispatched by the ListView in the scope of the renderer.</p>
+	 
+	              <div class="listing"><pre>
+        asdpc_internal function notifyRollOverRendererAt_internal(listIndex : uint) : void {
+            var renderer : IListItemRenderer = getRendererAt(listIndex);
+            if (!renderer) return; // renderer might be removed beforehand
+            renderer.dispatchEvent(createListItemRendererEvent(ListItemRendererEvent.ROLL_OVER));
+        }
+     </pre></div>
+	 
+	           <p></p><br/><hr></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#ListItemRendererEvent()" class="signatureLink">ListItemRendererEvent</a>(type:String)</div><div class="summaryTableDescription">
+		 ListItemRendererEvent constructor.</div></td><td class="summaryTableOwnerCol">ListItemRendererEvent</td></tr></table></div><a name="constantSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Constants</div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableConstant"><tr><th>&nbsp;</th><th colspan="2">Constant</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#DATA_CHANGED" class="signatureLink">DATA_CHANGED</a> : String = listItemRenderer_dataChanged<div class="summaryTableDescription">[static] 
+		 Event type DATA_CHANGED
+		 
+		 Dispatched, if the renderer was assigned a new item.
+		 
+		 </div></td><td class="summaryTableOwnerCol">ListItemRendererEvent</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#DATA_PROPERTY_CHANGED" class="signatureLink">DATA_PROPERTY_CHANGED</a> : String = listItemRenderer_dataPropertyChanged<div class="summaryTableDescription">[static] 
+		 Event type DATA_PROPERTY_CHANGED
+		 
+		 Dispatched, if properties of the assigned item have changed.
+		 
+		 </div></td><td class="summaryTableOwnerCol">ListItemRendererEvent</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#LIST_INDEX_CHANGED" class="signatureLink">LIST_INDEX_CHANGED</a> : String = listItemRenderer_listIndexChanged<div class="summaryTableDescription">[static] 
+		 Event type LIST_INDEX_CHANGED
+		 
+		 Dispatched, if the current item's list index has changed.
+		 
+		 </div></td><td class="summaryTableOwnerCol">ListItemRendererEvent</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#ROLL_OUT" class="signatureLink">ROLL_OUT</a> : String = listItemRenderer_rollOut<div class="summaryTableDescription">[static] 
+		 Event type ROLL_OUT
+		 
+		 Dispatched, if the mouse leaves the renderer area.
+		 
+		 </div></td><td class="summaryTableOwnerCol">ListItemRendererEvent</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#ROLL_OVER" class="signatureLink">ROLL_OVER</a> : String = listItemRenderer_rollOver<div class="summaryTableDescription">[static] 
+		 Event type ROLL_OVER
+		 
+		 Dispatched, if the mouse enters the renderer area.
+		 
+		 </div></td><td class="summaryTableOwnerCol">ListItemRendererEvent</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#SELECTION_CHANGED" class="signatureLink">SELECTION_CHANGED</a> : String = listItemRenderer_selectionChanged<div class="summaryTableDescription">[static] 
+		 Event type SELECTION_CHANGED
+		 
+		 Dispatched, if the currently assigned item has been selected or deselected.
+		 
+		 </div></td><td class="summaryTableOwnerCol">ListItemRendererEvent</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#VISIBILITY_CHANGED" class="signatureLink">VISIBILITY_CHANGED</a> : String = listItemRenderer_visibilityChanged<div class="summaryTableDescription">[static] 
+		 Event type VISIBILITY_CHANGED
+		 
+		 Dispatched, if a renderer became hidden or visible as a result of
+		 scrolling, insertion or deletion operations.
+		 
+		 </div></td><td class="summaryTableOwnerCol">ListItemRendererEvent</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="ListItemRendererEvent()"></a><a name="ListItemRendererEvent(String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">ListItemRendererEvent</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function ListItemRendererEvent(type:String)</code><p></p><p>
+		 ListItemRendererEvent constructor.
+		 
+		 </p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">type</span>:String</code> &mdash; The event type.
+		 </td></tr></table></div><div class="detailSectionHeader">Constant Detail</div><a name="constantDetail"></a><a name="DATA_CHANGED"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">DATA_CHANGED</td><td class="detailHeaderType">Constant</td></tr></table><div class="detailBody"><code>public static const DATA_CHANGED:String = listItemRenderer_dataChanged</code><p></p><p></p><p>
+		 Event type DATA_CHANGED
+		 
+		 <p>Dispatched, if the renderer was assigned a new item.</p>
+		 
+		 </p></div><a name="constantDetail"></a><a name="DATA_PROPERTY_CHANGED"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">DATA_PROPERTY_CHANGED</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public static const DATA_PROPERTY_CHANGED:String = listItemRenderer_dataPropertyChanged</code><p></p><p></p><p>
+		 Event type DATA_PROPERTY_CHANGED
+		 
+		 <p>Dispatched, if properties of the assigned item have changed.</p>
+		 
+		 </p></div><a name="constantDetail"></a><a name="LIST_INDEX_CHANGED"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">LIST_INDEX_CHANGED</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public static const LIST_INDEX_CHANGED:String = listItemRenderer_listIndexChanged</code><p></p><p></p><p>
+		 Event type LIST_INDEX_CHANGED
+		 
+		 <p>Dispatched, if the current item's list index has changed.</p>
+		 
+		 </p></div><a name="constantDetail"></a><a name="ROLL_OUT"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">ROLL_OUT</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public static const ROLL_OUT:String = listItemRenderer_rollOut</code><p></p><p></p><p>
+		 Event type ROLL_OUT
+		 
+		 <p>Dispatched, if the mouse leaves the renderer area.</p>
+		 
+		 </p></div><a name="constantDetail"></a><a name="ROLL_OVER"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">ROLL_OVER</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public static const ROLL_OVER:String = listItemRenderer_rollOver</code><p></p><p></p><p>
+		 Event type ROLL_OVER
+		 
+		 <p>Dispatched, if the mouse enters the renderer area.</p>
+		 
+		 </p></div><a name="constantDetail"></a><a name="SELECTION_CHANGED"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">SELECTION_CHANGED</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public static const SELECTION_CHANGED:String = listItemRenderer_selectionChanged</code><p></p><p></p><p>
+		 Event type SELECTION_CHANGED
+		 
+		 <p>Dispatched, if the currently assigned item has been selected or deselected.</p>
+		 
+		 </p></div><a name="constantDetail"></a><a name="VISIBILITY_CHANGED"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">VISIBILITY_CHANGED</td><td class="detailHeaderType">Constant</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code>public static const VISIBILITY_CHANGED:String = listItemRenderer_visibilityChanged</code><p></p><p></p><p>
+		 Event type VISIBILITY_CHANGED
+		 
+		 <p>Dispatched, if a renderer became hidden or visible as a result of
+		 scrolling, insertion or deletion operations.</p>
+		 
+		 </p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Freitag Mai 20 2011, 04:05 PM +02:00  </center></div></body></html><!--<br/>Freitag Mai 20 2011, 04:05 PM +02:00  -->

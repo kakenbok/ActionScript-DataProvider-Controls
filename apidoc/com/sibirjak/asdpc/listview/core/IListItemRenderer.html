@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../../override.css" type="text/css"><meta name="keywords" content="IListItemRenderer,com.sibirjak.asdpc.listview.core.IListItemRenderer,DATA_CHANGED,DATA_PROPERTY_CHANGED,LIST_INDEX_CHANGED,ROLL_OUT,ROLL_OVER,SELECTION_CHANGED,VISIBILITY_CHANGED,_isFirst,_isLast,_listItemData,_listView,_visibleRenderers,data,firstIndex,firstVisibleIndex,indices,isFirst,isLast,item,itemIndex,itemKey,listIndex,listItemData,parentItem,poolSize,selected,addIndex,allItemsRemoved,clear,deselect,drawListItem,getItemAt,getPoolSize,getVisibleRenderers,hasIndex,itemsAddedAt,itemsAddedAt,itemsRemovedAt,itemsRemovedAt,notifyClick,notifyMouseDown,notifyRollOut,notifyRollOver,numItemsBefore,refresh,removeAllIndices,removeIndex,rendererOutOfVisibleArea,select,setIsFirst_internal,setIsLast_internal,setListItemData_internal,setListView_internal,setSelectedSize,setSize,toString"><title>com.sibirjak.asdpc.listview.core.IListItemRenderer</title></head><body><script language="javascript" type="text/javascript" src="../../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+				asdocTitle = 'IListItemRenderer - ActionScript DataProvider Controls 0.4.0';
+				var baseRef = '../../../../../';
+				window.onload = configPage;
+			--></script>
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../../package-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../../class-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../../all-index-A.html" onclick="loadClassListFrame('../../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../../index.html?com/sibirjak/asdpc/listview/core/IListItemRenderer.html&amp;com/sibirjak/asdpc/listview/core/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">IListItemRenderer</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#propertySummary">Properties</a>&nbsp;| <a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("IListItemRenderer"); titleBar_setSubNav(false,true,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">com.sibirjak.asdpc.listview.core</a></td></tr><tr><td class="classHeaderTableLabel">Interface</td><td class="classSignature">public  interface  IListItemRenderer extends  <a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html">IDisplayObjectContainer</a>,  <a href="../../../../../com/sibirjak/asdpc/core/IDisplayObject.html">IDisplayObject</a>,  flash.events.IEventDispatcher</td></tr><tr><td class="classHeaderTableLabel">Implementors</td><td> <a href="../../../../../com/sibirjak/asdpc/listview/renderer/ListItemRenderer.html">ListItemRenderer</a></td></tr></table><p></p><p></p><p></p>
+	 ListItemRenderer interface.
+	 
+	 <p>This interface declares the necessary operations a list item
+	 renderer should implement. A list item renderer can be a display
+	 object of any type such as a View or even a plain Sprite.</p>
+	 
+	              <p>A ListItemRenderer represents the data of a particular item out of
+	 the list's data provider. For performance reasons renderers are pooled
+	 and reused. E.g. a list with a height of 200 and an item height of 20
+	 maintains only 10 renderers, even if the data provider contains more
+	 items. When scrolling the list, renderers with items that become invisible
+	 receive new data and will be repositioned to the top or end of the
+	 display list of renderers.</p>
+	 
+	              <b>Example</b>
+	 
+	              <p>The list's data provider contains 8 items. The list is configured
+	 to display 3 items (height = 90, itemheight = 30). The list is scrolled
+	 to the item at 2 (item3).</p> 
+	 
+	              <div class="listing"><pre>
+        item1
+        item2
+        ----------------
+        item3 - Renderer1
+        item4 - Renderer2
+        item5 - Renderer3
+        ----------------
+        item6
+        item7
+        item8
+     </pre></div>
+	 
+	              <p>The user scrolls to the item at 3 (item4). The renderer displaying
+	 the item at 2 (item3) is removed from the renderer list and parked.</p>
+	 
+	              <div class="listing"><pre>
+        item1
+        item2
+        item3
+        ----------------
+        item4 - Renderer2
+        item5 - Renderer3
+        item6
+        ----------------
+        item7
+        item8
+        Renderer1 parked
+     </pre></div>
+	 
+	              <p>The parked renderer now receives the data for the item at 5 (item6)
+	 and gets a new position.</p>
+	 
+	              <div class="listing"><pre>
+        item1
+        item2
+        item3
+        ----------------
+        item4 - Renderer2
+        item5 - Renderer3
+        item6 - Renderer1
+        ----------------
+        item7
+        item8
+     </pre></div>
+	 
+	              <b>Note to list item mouse events</b>
+	 
+	              <p>By default a ListView does not recognise mouse events of ListItemRenderer
+	 instances. The renderer is supposed to notify the list about such an event.
+	 This approach gives more control over events to the developer of a custom
+	 list item renderer.</p>
+	 
+	              <div class="listing"><pre>
+        // in MyRenderer
+        public function MyRenderer() {
+            addEventListener(MouseEvent.ROLL_OVER, rollOverHandler);
+        }
+        private function rollOverHandler(event : MouseEvent) : void {
+            _listItemRendererData.notifyRollOver();
+        }
+        
+        // in ListView
+        asdpc_internal function notifyRollOverRendererAt_internal(listIndex : uint) : void {
+            var renderer : IListItemRenderer = getRendererAt(listIndex);
+            if (!renderer) return; // renderer might be removed beforehand
+            renderer.dispatchEvent(createListItemRendererEvent(ListItemRendererEvent.ROLL_OVER));
+            dispatchEvent(createListItemEvent(ListItemEvent.ROLL_OVER, renderer.data.listIndex));
+        }
+     </pre></div>
+	 
+	           <p></p><br/><hr></div><a name="propertySummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Properties</div><div class="showHideLinks"><div id="hideInheritedProperty" class="hideInheritedProperty"><a class="showHideLink" href="#propertySummary" onclick="javascript:setInheritedVisible(false,'Property');"><img class="showHideLinkImage" src="../../../../../images/expanded.gif"> Hide Inherited Public Properties</a></div><div id="showInheritedProperty" class="showInheritedProperty"><a class="showHideLink" href="#propertySummary" onclick="javascript:setInheritedVisible(true,'Property');"><img class="showHideLinkImage" src="../../../../../images/collapsed.gif"> Show Inherited Public Properties</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableProperty"><tr><th>&nbsp;</th><th colspan="2">Property</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><a href="#data" class="signatureLink">data</a> : <a href="../../../../../com/sibirjak/asdpc/listview/core/ListItemRendererData.html">ListItemRendererData</a><div class="summaryTableDescription">
+		 Sets or gets the list item renderer data.</div></td><td class="summaryTableOwnerCol">IListItemRenderer</td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html#mouseChildren" class="signatureLink">mouseChildren</a> : Boolean<div class="summaryTableDescription">[write-only] </div></td><td class="summaryTableOwnerCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html">IDisplayObjectContainer</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html#numChildren" class="signatureLink">numChildren</a> : int<div class="summaryTableDescription">[read-only] </div></td><td class="summaryTableOwnerCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html">IDisplayObjectContainer</a></td></tr><tr class="hideInheritedProperty"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html#parent" class="signatureLink">parent</a> : DisplayObjectContainer<div class="summaryTableDescription">[read-only] </div></td><td class="summaryTableOwnerCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html">IDisplayObjectContainer</a></td></tr></table></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><div class="showHideLinks"><div id="hideInheritedMethod" class="hideInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(false,'Method');"><img class="showHideLinkImage" src="../../../../../images/expanded.gif"> Hide Inherited Public Methods</a></div><div id="showInheritedMethod" class="showInheritedMethod"><a class="showHideLink" href="#methodSummary" onclick="javascript:setInheritedVisible(true,'Method');"><img class="showHideLinkImage" src="../../../../../images/collapsed.gif"> Show Inherited Public Methods</a></div></div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html#addChild()" class="signatureLink">addChild</a>(child:DisplayObject):DisplayObject</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html">IDisplayObjectContainer</a></td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html#addChildAt()" class="signatureLink">addChildAt</a>(child:DisplayObject, index:int):DisplayObject</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html">IDisplayObjectContainer</a></td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html#contains()" class="signatureLink">contains</a>(child:DisplayObject):Boolean</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html">IDisplayObjectContainer</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#drawListItem()" class="signatureLink">drawListItem</a>():void</div><div class="summaryTableDescription">
+		 Draws the list item initially.</div></td><td class="summaryTableOwnerCol">IListItemRenderer</td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html#getChildAt()" class="signatureLink">getChildAt</a>(index:int):DisplayObject</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html">IDisplayObjectContainer</a></td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html#removeChild()" class="signatureLink">removeChild</a>(child:DisplayObject):DisplayObject</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html">IDisplayObjectContainer</a></td></tr><tr class="hideInheritedMethod"><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol"><img src="../../../../../images/inheritedSummary.gif" alt="Inherited" title="Inherited" class="inheritedSummaryImage"></td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html#removeChildAt()" class="signatureLink">removeChildAt</a>(index:int):DisplayObject</div><div class="summaryTableDescription"></div></td><td class="summaryTableOwnerCol"><a href="../../../../../com/sibirjak/asdpc/core/IDisplayObjectContainer.html">IDisplayObjectContainer</a></td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#setSelectedSize()" class="signatureLink">setSelectedSize</a>(width:int, height:int):void</div><div class="summaryTableDescription">
+		 Sets the renderer dimensions for the selected state.</div></td><td class="summaryTableOwnerCol">IListItemRenderer</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#setSize()" class="signatureLink">setSize</a>(width:int, height:int):void</div><div class="summaryTableDescription">
+		 Sets the renderer dimensions.</div></td><td class="summaryTableOwnerCol">IListItemRenderer</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><div class="detailSectionHeader">Property Detail</div><a name="propertyDetail"></a><a name="data"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">data</td><td class="detailHeaderType">property</td></tr></table><div class="detailBody"><code>data:<a href="../../../../../com/sibirjak/asdpc/listview/core/ListItemRendererData.html">ListItemRendererData</a></code><p></p><p></p><p>
+		 Sets or gets the list item renderer data.
+		 
+		 <p>Data will be set initially or as a result of scrolling
+		 operations throughout the entire listView life cycle.</p>
+		 
+		 <p>The concrete renderer is supposed to accept and display
+		 new data at any time.</p>
+		 </p><br/><span class="label"> Implementation </span><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function get data():<a href="../../../../../com/sibirjak/asdpc/listview/core/ListItemRendererData.html">ListItemRendererData</a></code><br/><code>&nbsp;&nbsp;&nbsp;&nbsp;public function set data(value:<a href="../../../../../com/sibirjak/asdpc/listview/core/ListItemRendererData.html">ListItemRendererData</a>):void</code><br/></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="drawListItem()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">drawListItem</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function drawListItem():void</code><p></p><p></p><p>
+		 Draws the list item initially.
+		 
+		 <p>This method is invoked only once right after the renderer
+		 instance has been created and the dimensions have been set.</p> 
+		 </p></div><a name="setSelectedSize()"></a><a name="setSelectedSize(int,int)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">setSelectedSize</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function setSelectedSize(width:int, height:int):void</code><p></p><p></p><p>
+		 Sets the renderer dimensions for the selected state.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">width</span>:int</code> &mdash; The selected item width.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">height</span>:int</code> &mdash; The selected item height.
+		 </td></tr></table></p></div><a name="setSize()"></a><a name="setSize(int,int)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">setSize</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function setSize(width:int, height:int):void</code><p></p><p></p><p>
+		 Sets the renderer dimensions.
+		 
+		 <p>After setting the dimensions the renderer should resize
+		 its content.</p>
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">width</span>:int</code> &mdash; The item width.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">height</span>:int</code> &mdash; The item height.
+		 </td></tr></table></p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Freitag Mai 20 2011, 04:05 PM +02:00  </center></div></body></html><!--<br/>Freitag Mai 20 2011, 04:05 PM +02:00  -->

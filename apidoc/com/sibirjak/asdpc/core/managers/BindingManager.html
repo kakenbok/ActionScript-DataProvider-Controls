@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../../override.css" type="text/css"><meta name="keywords" content="BindingManager,com.sibirjak.asdpc.core.managers.BindingManager,bindProperty,getDefaultStyles,getStyle,getViewProperty,getViewProperty,removeAllBindings,setBindableProperties,setDefaultStyles,setStyle,setStyles,setViewProperty,styleManagerStyleChangeHandler,unbindProperty,updateAllBindings,updateBinding,updateBindingsForProperty"><title>com.sibirjak.asdpc.core.managers.BindingManager</title></head><body><script language="javascript" type="text/javascript" src="../../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+				asdocTitle = 'BindingManager - ActionScript DataProvider Controls 0.4.0';
+				var baseRef = '../../../../../';
+				window.onload = configPage;
+			--></script>
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../../package-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../../class-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../../all-index-A.html" onclick="loadClassListFrame('../../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../../index.html?com/sibirjak/asdpc/core/managers/BindingManager.html&amp;com/sibirjak/asdpc/core/managers/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">BindingManager</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("BindingManager"); titleBar_setSubNav(false,false,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">com.sibirjak.asdpc.core.managers</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  BindingManager</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">BindingManager  <img src="../../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> org.as3commons.collections.LinkedMap</td></tr></table><p></p><p></p><p></p>
+	 Data binding manager.
+	 
+	 <p>Any object (display object, data object, ...) may define an unlimited
+	 number of bindable properties. A bound listener automatically gets updated
+	 if its bindable property changes. E.g. a DisplayObject's visibility can
+	 be directly bound to a toggle button's selected property without the need
+	 of implementing custom event listeners for the ButtonEvent.SELECTION_CHANGED
+	 event.</p>
+	 
+	              <p>The BindingManager implements all necessary code to maintain listeners
+	 and property changes and updates. The class that hosts the bindable
+	 property is in charge to trigger updates after the property changes.</p>  
+	 
+ 	             <div class="listing"><pre>
+        var label : ILabel = new Label();
+        label.text = "I am visible only if the button is selected";
+        addChild(DisplayObject(label));
+        var button : IButton = new Button();
+        button.toggle = true;
+        button.label = "Toggle";
+        button.bindProperty(Button.BINDABLE_PROPERTY_SELECTED, label, "visible");
+        addChild(DisplayObject(button));
+     </pre></div>
+	 
+ 	             <div class="listing"><pre>
+        private function setVisibility(visible : Boolean) : void {
+            trace ("Visible: ", visible);
+        }
+        var button : IButton = new Button();
+        button.toggle = true;
+        button.label = "Toggle";
+        button.bindProperty(Button.BINDABLE_PROPERTY_SELECTED, setVisibility);
+        addChild(DisplayObject(button));
+     </pre></div>
+	 
+	           <p></p><br/><hr></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#BindingManager()" class="signatureLink">BindingManager</a>(client:Object)</div><div class="summaryTableDescription">
+		 BindingManager constructor.</div></td><td class="summaryTableOwnerCol">BindingManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#bindProperty()" class="signatureLink">bindProperty</a>(propertyName:String, listener:Object, listenerPropertyName:String = null):Boolean</div><div class="summaryTableDescription">
+		 Binds a listener (bound listener) to a bindable property.</div></td><td class="summaryTableOwnerCol">BindingManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#removeAllBindings()" class="signatureLink">removeAllBindings</a>():void</div><div class="summaryTableDescription">
+		 Removes all bindings.</div></td><td class="summaryTableOwnerCol">BindingManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#setBindableProperties()" class="signatureLink">setBindableProperties</a>(properties:Array):void</div><div class="summaryTableDescription">
+		 Sets a list of bindable properties.</div></td><td class="summaryTableOwnerCol">BindingManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#unbindProperty()" class="signatureLink">unbindProperty</a>(propertyName:String, listener:Object, listenerPropertyName:String = null):void</div><div class="summaryTableDescription">
+		 Unbinds a formerly bound listener from a bindable property.</div></td><td class="summaryTableOwnerCol">BindingManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#updateAllBindings()" class="signatureLink">updateAllBindings</a>():void</div><div class="summaryTableDescription">
+		 Commands the BindingManager to update all bound listeners of a all properties.</div></td><td class="summaryTableOwnerCol">BindingManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#updateBinding()" class="signatureLink">updateBinding</a>(propertyName:String, listener:Object, listenerProperty:String):void</div><div class="summaryTableDescription">
+		 Commands the BindingManager to update a bound listeners of a certain properties.</div></td><td class="summaryTableOwnerCol">BindingManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#updateBindingsForProperty()" class="signatureLink">updateBindingsForProperty</a>(propertyName:String, listeners:LinkedMap = null):void</div><div class="summaryTableDescription">
+		 Commands the BindingManager to update all bound listeners of a certain property.</div></td><td class="summaryTableOwnerCol">BindingManager</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="BindingManager()"></a><a name="BindingManager(Object)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">BindingManager</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function BindingManager(client:Object)</code><p></p><p>
+		 BindingManager constructor.
+		 
+		 </p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">client</span>:Object</code> &mdash; The instance that defines a bindable property.
+		 </td></tr></table></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="bindProperty()"></a><a name="bindProperty(String,Object,String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">bindProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public function bindProperty(propertyName:String, listener:Object, listenerPropertyName:String = null):Boolean</code><p></p><p></p><p>
+		 Binds a listener (bound listener) to a bindable property.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">propertyName</span>:String</code> &mdash; The name of the property to bind.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">listener</span>:Object</code> &mdash; A function reference or the object that hosts the property,
+		 that should be updated automatically.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">listenerPropertyName</span>:String</code> (default = <code>null</code>)<code></code> &mdash; The listener property, that should be updated automatically.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>Boolean</code> &mdash; True, if the binding could be established.
+		 </td></tr></table></div><a name="removeAllBindings()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">removeAllBindings</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function removeAllBindings():void</code><p></p><p></p><p>
+		 Removes all bindings.
+		 </p></div><a name="setBindableProperties()"></a><a name="setBindableProperties(Array)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">setBindableProperties</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public final function setBindableProperties(properties:Array):void</code><p></p><p></p><p>
+		 Sets a list of bindable properties.
+		 
+		 <p>If not enabled by this setter, binding of a property does not work.</p>
+		 
+		 <p>This list is usually set within the constructor of the client.</p>
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">properties</span>:Array</code> &mdash; A list of bindable properties.
+		 </td></tr></table></p></div><a name="unbindProperty()"></a><a name="unbindProperty(String,Object,String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">unbindProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function unbindProperty(propertyName:String, listener:Object, listenerPropertyName:String = null):void</code><p></p><p></p><p>
+		 Unbinds a formerly bound listener from a bindable property.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">propertyName</span>:String</code> &mdash; The name of the property to unbind.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">listener</span>:Object</code> &mdash; A function reference or the object that hosts the property,
+		 that was updated automatically.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">listenerPropertyName</span>:String</code> (default = <code>null</code>)<code></code> &mdash; The listener property, that was updated automatically.
+		 </td></tr></table></p></div><a name="updateAllBindings()"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">updateAllBindings</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function updateAllBindings():void</code><p></p><p></p><p>
+		 Commands the BindingManager to update all bound listeners of a all properties.
+		 
+		 <p>This method is invoked by the binding client usually after is has
+		 been fully initialised. A View instance would do this in its initialised()
+		 method.</p>
+		 </p></div><a name="updateBinding()"></a><a name="updateBinding(String,Object,String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">updateBinding</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function updateBinding(propertyName:String, listener:Object, listenerProperty:String):void</code><p></p><p></p><p>
+		 Commands the BindingManager to update a bound listeners of a certain properties.
+		 
+		 <p>This method is invoked by the binding client usually immediately after a new
+		 listener has been bound to a property.</p>
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">propertyName</span>:String</code> &mdash; The name of the bound property.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">listener</span>:Object</code> &mdash; A function reference or the object that hosts the property,
+		 that shall be updated automatically.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">listenerProperty</span>:String</code> &mdash; The listener property, that shall be updated automatically.
+		 </td></tr></table></p></div><a name="updateBindingsForProperty()"></a><a name="updateBindingsForProperty(String,org.as3commons.collections.LinkedMap)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">updateBindingsForProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public function updateBindingsForProperty(propertyName:String, listeners:LinkedMap = null):void</code><p></p><p></p><p>
+		 Commands the BindingManager to update all bound listeners of a certain property.
+		 
+		 <p>This method is invoked by the binding client usually after is has
+		 been fully initialised.</p>
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">propertyName</span>:String</code> &mdash; The name of the bound property.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">listeners</span>:LinkedMap</code> (default = <code>null</code>)<code></code> &mdash; A map of all listeners of that property (only passed internally).
+		 </td></tr></table></p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Freitag Mai 20 2011, 04:05 PM +02:00  </center></div></body></html><!--<br/>Freitag Mai 20 2011, 04:05 PM +02:00  -->
