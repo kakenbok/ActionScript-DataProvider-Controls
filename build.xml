@@ -10,6 +10,7 @@
 
 	<property name="SRC" value="src" />
 	<property name="EXAMPLES" value="examples" />
+	<property name="TESTS" value="tests" />
 
 	<property name="LIBS" value="libs" />
 	<property name="ZIP" value="deploy/zip" />
@@ -56,6 +57,7 @@
 			<zipfileset file="${SWC}/${FILE_NAME}-${VERSION}.swc" prefix="swc" />
 			<zipfileset dir="${LIBS}" prefix="libs" />
 			<zipfileset dir="${DOC}" prefix="doc" />
+			<zipfileset dir="${TESTS}" prefix="tests" />
 		</zip>
 		
 	</target>
