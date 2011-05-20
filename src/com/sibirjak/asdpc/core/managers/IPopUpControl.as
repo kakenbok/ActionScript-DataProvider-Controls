@@ -1,0 +1,48 @@
+/**
+ * ActionScript Data Provider Controls
+ * 
+ * Copyright (c) 2010 Jens Struwe, http://www.sibirjak.com/
+ * 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * 
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ * 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
+package com.sibirjak.asdpc.core.managers {
+	import com.sibirjak.asdpc.core.IView;
+
+	/**
+	 * PopUpControl interface.
+	 * 
+	 * <p>The IPopUpControl interface became necessary in conjunction with
+	 * the style management. Styles set to a popup trigger button (e.g. the
+	 * ColorPicker button or a SelectBox) should be available also to
+	 * the particular popup (ColorPicker color list, SelectBox list). Since
+	 * such popups are not direct children of their each trigger button,
+	 * the interfaces IPopUpControl and IPopUpControlPopUp tell the StyleManager
+	 * that style inheritance should respect also the trigger-popup relation.</p>
+	 * 
+	 * @author jes 10.12.2009
+	 */
+	public interface IPopUpControl extends IView {
+		
+		/**
+		 * The popup of an IPopUpControl view.
+		 */
+		function get popUp() : IPopUpControlPopUp;
+		
+	}
+}

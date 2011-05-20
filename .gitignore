@@ -1,0 +1,5 @@
+.settings
+.project
+build.env
+/bin
+/_tests

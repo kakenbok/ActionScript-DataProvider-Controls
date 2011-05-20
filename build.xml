@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ASPDC" default="SWC" basedir="." >
+	
+	<property file="build.env" />
+
+	<property name="ASDOC" value="${FLEX_HOME}\bin\asdoc.exe" />
+
+	<property name="FILE_NAME" value="asdpc" />
+	<property name="VERSION" value="0.4.1" />
+
+	<property name="SRC" value="src" />
+	<property name="EXAMPLES" value="examples" />
+
+	<property name="LIBS" value="libs" />
+	<property name="ZIP" value="deploy/zip" />
+	<property name="SWC" value="deploy/swc" />
+	<property name="DOC" value="deploy/doc" />
+
+	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/> 
+
+	<target name="SWC" description="Compile Libray">
+		<compc
+			output="${SWC}/${FILE_NAME}-${VERSION}.swc"
+		>
+			<include-sources dir="${basedir}/${SRC}/com/sibirjak/" includes="*" /> 
+
+			<!-- Libs -->
+			<external-library-path dir="${LIBS}" includes="*" />
+			<external-library-path dir="${FLEX_HOME}/frameworks/libs/player" includes="*" />
+		</compc>
+	</target>
+
+	<target name="Clean" description="Clean">
+		<delete dir="${DOC}/apidoc" failonerror="false" />
+	</target>
+
+	<target name="APIDoc" depends="Clean">
+		<exec executable="${ASDOC}" failonerror="true">
+			<arg line="-doc-sources 'src/com/sibirjak/asdpc'" />
+			<arg line="-source-path '${SRC}'" />
+			<arg line="-window-title 'ActionScript DataProvider Controls ${VERSION}'" />
+			<arg line="-output '${DOC}/apidoc'"/>
+
+			<arg line="-external-library-path libs" />
+		</exec>
+
+		<fixcrlf srcdir="${DOC}/apidoc" includes="**/*.*" eol="lf" />
+	</target>
+
+	<target name="Zip" description="ZIP">
+ 		<delete file="${ZIP}/${FILE_NAME}-${VERSION}.zip" />
+
+		<zip destfile="${ZIP}/${FILE_NAME}-${VERSION}.zip">
+			<zipfileset dir="${SRC}" prefix="src" />
+			<zipfileset dir="${EXAMPLES}" prefix="examples" />
+			<zipfileset file="${SWC}/${FILE_NAME}-${VERSION}.swc" prefix="swc" />
+			<zipfileset dir="${LIBS}" prefix="libs" />
+			<zipfileset dir="${DOC}" prefix="doc" />
+		</zip>
+		
+	</target>
+
+</project>
