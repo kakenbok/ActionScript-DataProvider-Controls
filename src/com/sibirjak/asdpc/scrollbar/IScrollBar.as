@@ -39,7 +39,7 @@ package com.sibirjak.asdpc.scrollbar {
 		 * 
 		 * <p>The scrollbar listens to the owners mouse wheel events.</p>
 		 * 
-		 * <p>Can only be set before the scrollbar ist added to the stage.
+		 * <p>Can only be set before the scrollbar ist added to the stage.</p>
 		 */
 		function set owner(owner : DisplayObject) : void;	
 
@@ -51,7 +51,7 @@ package com.sibirjak.asdpc.scrollbar {
 		/**
 		 * Sets or returns the scrollbar direction.
 		 * 
-		 * <p>Can only be set before the scrollbar ist added to the stage.
+		 * <p>Can only be set before the scrollbar ist added to the stage.</p>
 		 */
 		function get direction() : String;
 		

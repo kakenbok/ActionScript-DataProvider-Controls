@@ -92,7 +92,7 @@ package com.sibirjak.asdpc.core {
 		// in view
 
 		override protected function init() : void {
-			if (_width < 100 || _height < 100) {
+			if (_width &lt; 100 || _height &lt; 100) {
 				_backgroundColor = 0xFF0000; // warn size too small
 			}
 		}

@@ -258,21 +258,21 @@ package com.sibirjak.asdpc.listview.core {
 		 * 
 		 * <p>Case 1: All items are removed before the visible range.
 		 * The firstVisibleIndex will be decreased by the number of
-		 * items removed.<p>
+		 * items removed.</p>
 		 * 
 		 * <p>Case 2: All items are removed after the visible range.
-		 * There is nothing to do then.<p>
+		 * There is nothing to do then.</p>
 		 * 
 		 * <p>Case 3: Items are removed from within the visible range.
 		 * All affected renderers will be removed from the visibleRenderers
 		 * list and the same number of empty items is added to the end. The
-		 * firstVisibleIndex stays as it is.<p>
+		 * firstVisibleIndex stays as it is.</p>
 		 * 
 		 * <p>Case 4: Items are removed before and withing the visible range.
 		 * The firstVisibleIndex will be decreased by the number of items
 		 * removed before this range. All affected renderers will be removed
 		 * from the visibleRenderers list and the same number of empty items
-		 * is added to the end.<p>
+		 * is added to the end.</p>
 		 * 
 		 * @param index Index where items have been removed.
 		 * @param numItems Number of items removed.

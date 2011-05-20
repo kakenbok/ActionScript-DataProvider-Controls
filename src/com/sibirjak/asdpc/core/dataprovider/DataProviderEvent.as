@@ -59,14 +59,14 @@ package com.sibirjak.asdpc.core.dataprovider {
 		/**
 		 * The affected index.
 		 * 
-		 * <p>Not set (-1) for the RESET event kind.
+		 * <p>Not set (-1) for the RESET event kind.</p>
 		 */
 		public var index : int;
 
 		/**
 		 * The number of affected items.
 		 * 
-		 * <p>Not set (0) for the RESET event kind.
+		 * <p>Not set (0) for the RESET event kind.</p>
 		 */
 		public var numItems : uint;
 

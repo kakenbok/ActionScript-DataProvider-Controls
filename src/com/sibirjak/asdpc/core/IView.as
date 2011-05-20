@@ -102,7 +102,10 @@ package com.sibirjak.asdpc.core {
 		function setViewProperty(property : String, value : *) : void;
 		
 		/**
-		 * @copy com.sibirjak.asdpc.core.managers.ViewPropertyManager#getViewProperty()
+		 * Gets a property value.
+		 * 
+		 * @param property The name of the property.
+		 * @return The value of the property.
 		 */
 		function getViewProperty(property : String) : *;
 

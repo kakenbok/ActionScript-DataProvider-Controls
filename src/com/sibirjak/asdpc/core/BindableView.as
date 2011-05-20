@@ -94,7 +94,9 @@ package com.sibirjak.asdpc.core {
 		}
 
 		/**
-		 * @copy com.sibirjak.asdpc.core.managers.BindingManager#updateBindingsForProperty()
+		 * Updates all listeners of a certain property.
+		 * 
+		 * @param propertyName The name of the bound property.
 		 */
 		protected final function updateBindingsForProperty(propertyName : String) : void {
 			_bindingManager.updateBindingsForProperty(propertyName);

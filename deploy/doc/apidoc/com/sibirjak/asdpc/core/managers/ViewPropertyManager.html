@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"><!-- saved from url=(0014)about:internet --><html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><link rel="stylesheet" href="../../../../../style.css" type="text/css" media="screen"><link rel="stylesheet" href="../../../../../print.css" type="text/css" media="print"><link rel="stylesheet" href="../../../../../override.css" type="text/css"><meta name="keywords" content="ViewPropertyManager,com.sibirjak.asdpc.core.managers.ViewPropertyManager,bindProperty,getDefaultStyles,getStyle,getViewProperty,getViewProperty,removeAllBindings,setBindableProperties,setDefaultStyles,setStyle,setStyles,setViewProperty,styleManagerStyleChangeHandler,unbindProperty,updateAllBindings,updateBinding,updateBindingsForProperty"><title>com.sibirjak.asdpc.core.managers.ViewPropertyManager</title></head><body><script language="javascript" type="text/javascript" src="../../../../../asdoc.js"></script><script language="javascript" type="text/javascript" src="../../../../../help.js"></script><script language="javascript" type="text/javascript" src="../../../../../cookies.js"></script><script language="javascript" type="text/javascript"><!--
+				asdocTitle = 'ViewPropertyManager - ActionScript DataProvider Controls 0.4.0';
+				var baseRef = '../../../../../';
+				window.onload = configPage;
+			--></script>
+<script type="text/javascript">
+			scrollToNameAnchor();
+		</script><table class="titleTable" cellpadding="0" cellspacing="0" id="titleTable" style="display:none"><tr><td class="titleTableTitle" align="left">API Documentation</td><td class="titleTableTopNav" align="right"><a href="../../../../../package-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Packages</a>&nbsp;|&nbsp;<a href="../../../../../class-summary.html" onclick="loadClassListFrame('../../../../../all-classes.html')">All Classes</a>&nbsp;|&nbsp;<a href="../../../../../all-index-A.html" onclick="loadClassListFrame('../../../../../index-list.html')">Index</a>&nbsp;|&nbsp;<a id="framesLink1" href="../../../../../index.html?com/sibirjak/asdpc/core/managers/ViewPropertyManager.html&amp;com/sibirjak/asdpc/core/managers/class-list.html">Frames</a><a id="noFramesLink1" style="display:none" href="" onclick="parent.location=document.location"> No Frames </a></td><td class="titleTableLogo" align="right" rowspan="3"><img src="../../../../../images/logo.jpg" class="logoImage" alt=" Adobe Logo " title=" Adobe Logo "></td></tr><tr class="titleTableRow2"><td class="titleTableSubTitle" id="subTitle" align="left">ViewPropertyManager</td><td class="titleTableSubNav" id="subNav" align="right"><a href="#methodSummary">Methods</a></td></tr><tr class="titleTableRow3"><td colspan="3">&nbsp;</td></tr></table><script language="javascript" type="text/javascript" xml:space="preserve">
+				<!--
+				
+					if (!isEclipse() || window.name != ECLIPSE_FRAME_NAME) {titleBar_setSubTitle("ViewPropertyManager"); titleBar_setSubNav(false,false,false,false,false,false,false,false,true,false,false	,false,false,false,false,false);}	
+				-->
+			</script><div xmlns:fn="http://www.w3.org/2005/xpath-functions" class="MainContent"><table class="classHeaderTable" cellpadding="0" cellspacing="0"><tr><td class="classHeaderTableLabel">Package</td><td><a href="package-detail.html" onclick="javascript:loadClassListFrame('class-list.html')">com.sibirjak.asdpc.core.managers</a></td></tr><tr><td class="classHeaderTableLabel">Class</td><td class="classSignature">public  class  ViewPropertyManager</td></tr><tr><td class="classHeaderTableLabel">Inheritance</td><td class="inheritanceList">ViewPropertyManager  <img src="../../../../../images/inherit-arrow.gif" title="Inheritance" alt="Inheritance" class="inheritArrow"> Object</td></tr></table><p></p><p></p><p></p>
+	 Generic property manager for display objects.
+	 
+	 <p>Often a child display object needs to be consistent to an ancector state.
+	 E.g. the rotation of the arrow icon of a ScrollBar button depends on the
+	 ScrollBar direction. A ViewPropertyManager simply stores property-value-pairs
+	 that can be easily received by a traversal of the parent chain of a child
+	 object. This way even custom programmatic skins, who not extend the core
+	 View class may obtain information about their parents.</p>
+	 
+	              <div class="listing"><pre>
+        in ScrollBar:
+        ----------------------------------
+        setViewProperty(VIEW_PROPERTY_SCROLLBAR_DIRECTION, _direction);
+        ...
+        _upButton.setViewProperty(VIEW_PROPERTY_SCROLLBAR_BUTTON, UP_BUTTON_NAME);
+        
+        in ScrollButtonIconSkin:
+        ----------------------------------
+        var direction : String = getViewProperty(ScrollBar.VIEW_PROPERTY_SCROLLBAR_DIRECTION);
+        ...
+        var buttonName : String = getViewProperty(ScrollBar.VIEW_PROPERTY_SCROLLBAR_BUTTON);
+        ...
+        if (direction == Direction.VERTICAL && buttonName == ScrollBar.DOWN_BUTTON_NAME) {
+            icon.rotation = 180;
+        }
+        or in CustomSkin:
+        ----------------------------------
+        var direction : String = ViewPropertyManager.getViewProperty(this, ScrollBar.VIEW_PROPERTY_SCROLLBAR_DIRECTION);
+        ...
+        var buttonName : String = ViewPropertyManager.getViewProperty(this, ScrollBar.VIEW_PROPERTY_SCROLLBAR_BUTTON);
+        ...
+        if (direction == Direction.VERTICAL && buttonName == ScrollBar.DOWN_BUTTON_NAME) {
+            icon.rotation = 180;
+        }
+     </pre></div>
+	 
+	           <p></p><br/><hr></div><a name="methodSummary"></a><div class="summarySection"><div class="summaryTableTitle">Public Methods </div><table cellspacing="0" cellpadding="3" class="summaryTable " id="summaryTableMethod"><tr><th>&nbsp;</th><th colspan="2">Method</th><th class="summaryTableOwnerCol">Defined By</th></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#ViewPropertyManager()" class="signatureLink">ViewPropertyManager</a>(client:<a href="../../../../../com/sibirjak/asdpc/core/managers/IViewPropertyManagerClient.html">IViewPropertyManagerClient</a>)</div><div class="summaryTableDescription">
+		 ViewPropertyManager constructor.</div></td><td class="summaryTableOwnerCol">ViewPropertyManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getViewProperty()" class="signatureLink">getViewProperty</a>(property:String):*</div><div class="summaryTableDescription">
+		 Gets a property value.</div></td><td class="summaryTableOwnerCol">ViewPropertyManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#getViewProperty()" class="signatureLink">getViewProperty</a>(displayObject:DisplayObject, property:String):*</div><div class="summaryTableDescription">[static] 
+		 Gets a property value via the static interface.</div></td><td class="summaryTableOwnerCol">ViewPropertyManager</td></tr><tr class=""><td class="summaryTablePaddingCol">&nbsp;</td><td class="summaryTableInheritanceCol">&nbsp;</td><td class="summaryTableSignatureCol"><div class="summarySignature"><a href="#setViewProperty()" class="signatureLink">setViewProperty</a>(property:String, value:*):void</div><div class="summaryTableDescription">
+		 Sets a property.</div></td><td class="summaryTableOwnerCol">ViewPropertyManager</td></tr></table></div><script language="javascript" type="text/javascript"><!--
+										showHideInherited();
+										--></script><div class="MainContent"><a name="constructorDetail"></a><div class="detailSectionHeader">Constructor Detail</div><a name="ViewPropertyManager()"></a><a name="ViewPropertyManager(com.sibirjak.asdpc.core.managers.IViewPropertyManagerClient)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">ViewPropertyManager</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">Constructor</td></tr></table><div class="detailBody"><code>public function ViewPropertyManager(client:<a href="../../../../../com/sibirjak/asdpc/core/managers/IViewPropertyManagerClient.html">IViewPropertyManagerClient</a>)</code><p></p><p>
+		 ViewPropertyManager constructor.
+		 
+		 </p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">client</span>:<a href="../../../../../com/sibirjak/asdpc/core/managers/IViewPropertyManagerClient.html">IViewPropertyManagerClient</a></code> &mdash; The property hosting client.
+		 </td></tr></table></div><a name="methodDetail"></a><div class="detailSectionHeader">Method Detail</div><a name="getViewProperty()"></a><a name="getViewProperty(String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getViewProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td></tr></table><div class="detailBody"><code> public final function getViewProperty(property:String):*</code><p></p><p></p><p>
+		 Gets a property value.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">property</span>:String</code> &mdash; The name of the property.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>*</code> &mdash; The value of the property.
+		 </td></tr></table></div><a name="getViewProperty()"></a><a name="getViewProperty(flash.display.DisplayObject,String)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">getViewProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public static function getViewProperty(displayObject:DisplayObject, property:String):*</code><p></p><p></p><p>
+		 Gets a property value via the static interface.
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">displayObject</span>:DisplayObject</code> &mdash; The display object from that the lookup starts.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">property</span>:String</code> &mdash; The name of the property.
+		 </td></tr></table></p><p></p><span class="label">Returns</span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20"></td><td><code>*</code> &mdash; The value of the property.
+		 </td></tr></table></div><a name="setViewProperty()"></a><a name="setViewProperty(String,any)"></a><table class="detailHeader" cellpadding="0" cellspacing="0"><tr><td class="detailHeaderName">setViewProperty</td><td class="detailHeaderParens">()</td><td class="detailHeaderType">method</td><td class="detailHeaderRule">&nbsp;</td></tr></table><div class="detailBody"><code> public final function setViewProperty(property:String, value:*):void</code><p></p><p></p><p>
+		 Sets a property.
+		 
+		 <p>Properties can be used to enable state distinction by display
+		 descendants.</p>
+		 
+		 </p><p><span class="label"> Parameters </span><table cellpadding="0" cellspacing="0" border="0"><tr><td width="20px"></td><td><code><span class="label">property</span>:String</code> &mdash; The name of the property.
+		 </td></tr><tr><td class="paramSpacer">&nbsp;</td></tr><tr><td width="20px"></td><td><code><span class="label">value</span>:*</code> &mdash; The value of the property.
+		 </td></tr></table></p></div><br/><br/><hr><br/><p></p><center class="copyright"><footer></footer><br/>Freitag Mai 20 2011, 04:05 PM +02:00  </center></div></body></html><!--<br/>Freitag Mai 20 2011, 04:05 PM +02:00  -->

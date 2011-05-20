@@ -6,7 +6,7 @@
 	<property name="ASDOC" value="${FLEX_HOME}\bin\asdoc.exe" />
 
 	<property name="FILE_NAME" value="asdpc" />
-	<property name="VERSION" value="0.4.1" />
+	<property name="VERSION" value="0.4.0" />
 
 	<property name="SRC" value="src" />
 	<property name="EXAMPLES" value="examples" />

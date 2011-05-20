@@ -48,7 +48,7 @@ package com.sibirjak.asdpc.core.managers {
 		...
 		var buttonName : String = getViewProperty(ScrollBar.VIEW_PROPERTY_SCROLLBAR_BUTTON);
 		...
-		if (direction == Direction.VERTICAL && buttonName == ScrollBar.DOWN_BUTTON_NAME) {
+		if (direction == Direction.VERTICAL &#38;&#38; buttonName == ScrollBar.DOWN_BUTTON_NAME) {
 			icon.rotation = 180;
 		}
 
@@ -58,7 +58,7 @@ package com.sibirjak.asdpc.core.managers {
 		...
 		var buttonName : String = ViewPropertyManager.getViewProperty(this, ScrollBar.VIEW_PROPERTY_SCROLLBAR_BUTTON);
 		...
-		if (direction == Direction.VERTICAL && buttonName == ScrollBar.DOWN_BUTTON_NAME) {
+		if (direction == Direction.VERTICAL &#38;&#38; buttonName == ScrollBar.DOWN_BUTTON_NAME) {
 			icon.rotation = 180;
 		}
 	 * </listing>

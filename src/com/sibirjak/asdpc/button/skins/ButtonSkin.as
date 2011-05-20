@@ -77,7 +77,7 @@ package com.sibirjak.asdpc.button.skins {
 	/**
 	 * The default button skin.
 	 * 
-	 * <p>This skin is a statful skin used for all 8 button states.
+	 * <p>This skin is a statful skin used for all 8 button states.</p>
 	 * 
 	 * @author jes 21.12.2009
 	 */
