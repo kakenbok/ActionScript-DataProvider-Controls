@@ -8,7 +8,7 @@ h3. References
 
 *Downloads*
 
-* "Downloads":https://github.com/kakenbok/ActionScript-DataProvider-Controls/downloads (ZIP, SWC)
+* "Downloads":http://sibirjak.com/osflash/projects/as-dataprovider-controls/ (ZIP, SWC)
 
 *Documentation*
 
