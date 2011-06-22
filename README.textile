@@ -4,6 +4,6 @@ AS DataProvider Controls - Standard user interface components
 
 h3. References
 
-* "Project Homepage":http://sibirjak.com/osflash/projects/as-dataprovider-controls/	/ (Overview, Features, Documentation, Examples)
-* "Downloads":http://sibirjak.com/osflash/projects/as-dataprovider-controls/ (ZIP, SWC)
+* "Project Homepage":http://sibirjak.com/osflash/projects/as-dataprovider-controls/ (Overview, Features, Documentation, Examples)
+* "Downloads":http://sibirjak.com/osflash/projects/as-dataprovider-controls/downloads/ (ZIP, SWC)
 * "APIDoc":http://kakenbok.github.com/ActionScript-DataProvider-Controls/apidoc/
