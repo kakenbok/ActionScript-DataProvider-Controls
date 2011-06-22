@@ -1,52 +1,9 @@
-h2. AS DataProvider Controls - Standard user interface components
-
-This is a library of UI components with focus on data intergration and customization.
+AS DataProvider Controls - Standard user interface components
 
 !http://sibirjak.com/osflash/wp-content/uploads/2010/02/teaser.png!
 
 h3. References
 
-*Downloads*
-
-* "Downloads":http://sibirjak.com/osflash/projects/as-dataprovider-controls/ (ZIP, SWC)
-
-*Documentation*
-
 * "Project Homepage":http://sibirjak.com/osflash/projects/as-dataprovider-controls/	/ (Overview, Features, Documentation, Examples)
+* "Downloads":http://sibirjak.com/osflash/projects/as-dataprovider-controls/ (ZIP, SWC)
 * "APIDoc":http://kakenbok.github.com/ActionScript-DataProvider-Controls/apidoc/
-* "Documentation":http://sibirjak.com/osflash/projects/as-dataprovider-controls/documentation/
-* "TreeView documentation":http://sibirjak.com/osflash/projects/as-dataprovider-controls/documentation/treeview/
-
-h2. Features
-
-* Easy and extensive customization (functionality, appearance)
-* Platform, framework and project neutrality (out of the box usage)
-* Generic data intergration (data provider interface architecture)
-* High-performance
-* Unit tested and well documented
-* Open-source licence <a href="http://www.opensource.org/licenses/mit-license.php">MIT</a>
-
-h2. Contents
-
-* ListView
-* TreeView
-* Button and ToggleButton
-* Label and TextInput
-
-And (still) in beta state:
-
-* SelectBox
-* RadioButton and RadioGroup
-* CheckBox
-* HSlider and VSlider
-* ColorPicker
-* ScrollPane
-* Window and TabBar
-* HLayout, VLayout, GridLayout
-
-h2. Dependencies
-
-The sources of this project depend on two third party libraries. Both are included in the ZIP downloads.
-* "AS3Commons Collections 1.3.0":https://github.com/AS3Commons/as3commons-collections
-* "GTween 2.01":http://gskinner.com/libraries/gtween/#download
-
