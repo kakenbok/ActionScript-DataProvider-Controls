@@ -106,7 +106,7 @@ package com.sibirjak.asdpc.core {
 		 */
 		public static function cleanUp(displayObject : DisplayObject) : void {
 			if (displayObject is IView) {
-				IView(displayObject).validateNow();
+				IView(displayObject).cleanUp();
 			}
 		}
 

@@ -112,6 +112,8 @@ package com.sibirjak.asdpcbeta.slider {
 		}
 		
 		public function set minValue(minValue : Number) : void {
+			if (minValue == _minValue) return;
+
 			_minValue = minValue;
 
 			if (_value < _minValue) {
@@ -128,6 +130,8 @@ package com.sibirjak.asdpcbeta.slider {
 		}
 		
 		public function set value(value : Number) : void {
+			if (value == _value) return;
+
 			_value = value;
 			
 			invalidateProperty(UPDATE_PROPERTY_VALUE);
@@ -140,6 +144,8 @@ package com.sibirjak.asdpcbeta.slider {
 		}
 		
 		public function set maxValue(maxValue : Number) : void {
+			if (maxValue == _maxValue) return;
+
 			_maxValue = maxValue;
 			
 			if (_value > _maxValue) {

@@ -22,6 +22,8 @@
  * THE SOFTWARE.
  */
 package com.sibirjak.asdpc.listview.renderer {
+
+	import com.sibirjak.asdpc.core.DisplayObjectAdapter;
 	import com.sibirjak.asdpc.core.View;
 	import com.sibirjak.asdpc.listview.core.IListItemRenderer;
 	import com.sibirjak.asdpc.listview.core.ListItemRendererData;
@@ -545,6 +547,8 @@ package com.sibirjak.asdpc.listview.renderer {
 			_contentRenderer.removeEventListener(MouseEvent.ROLL_OUT, rollOutHandler);
 			_contentRenderer.removeEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
 			_contentRenderer.removeEventListener(MouseEvent.CLICK, clickHandler);
+			
+			DisplayObjectAdapter.cleanUp(_contentRenderer as DisplayObject);
 
 			if (_icon) {
 				_icon.removeEventListener(MouseEvent.MOUSE_DOWN, mouseDownHandler);
