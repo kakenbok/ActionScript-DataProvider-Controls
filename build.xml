@@ -6,7 +6,7 @@
 	<property name="ASDOC" value="${FLEX_HOME}\bin\asdoc.exe" />
 
 	<property name="FILE_NAME" value="asdpc" />
-	<property name="VERSION" value="0.4.0" />
+	<property name="VERSION" value="0.4.1-snapshot" />
 
 	<property name="SRC" value="src" />
 	<property name="EXAMPLES" value="examples" />
@@ -20,14 +20,12 @@
 	<taskdef resource="flexTasks.tasks" classpath="${FLEX_HOME}/ant/lib/flexTasks.jar"/> 
 
 	<target name="SWC" description="Compile Libray">
-		<compc
-			output="${SWC}/${FILE_NAME}-${VERSION}.swc"
-		>
+		<compc output="${SWC}/${FILE_NAME}-${VERSION}.swc">
 			<include-sources dir="${basedir}/${SRC}/com/sibirjak/" includes="*" /> 
 
 			<!-- Libs -->
 			<external-library-path dir="${LIBS}" includes="*" />
-			<external-library-path dir="${FLEX_HOME}/frameworks/libs/player" includes="*" />
+			<external-library-path dir="${FLASH_PLAYER_LIBS}" includes="*" />
 		</compc>
 	</target>
 
