@@ -63,6 +63,7 @@ package com.sibirjak.asdpcbeta.slider {
 		private var _enabled : Boolean = true;
 		private var _liveDragging : Boolean = true;
 		private var _snapInterval : uint = 1;
+		private var _mouseWheelDelta : uint = 3;
 		
 		/* changeable properties or styles */
 		private const UPDATE_PROPERTY_ACTIVATION : String = "activation";
@@ -188,6 +189,14 @@ package com.sibirjak.asdpcbeta.slider {
 			return _snapInterval;
 		}
 		
+		public function set mouseWheelDelta(mouseWheelDelta : uint) : void {
+			_mouseWheelDelta = mouseWheelDelta;
+		}
+		
+		public function get mouseWheelDelta() : uint {
+			return _mouseWheelDelta;
+		}
+
 		/*
 		 * View life cycle
 		 */
@@ -297,8 +306,19 @@ package com.sibirjak.asdpcbeta.slider {
 
 		private function mouseScrollHandler(event : MouseEvent) : void {
 			if (!sliderEnabled) return;
+			
+			var eventDelta : int = event.delta / Math.abs(event.delta);
 
-			value = snapValue(_value - event.delta * _snapInterval);
+			var value : Number = snapValue(_value - (eventDelta * _mouseWheelDelta) * _snapInterval);
+
+			// always snap thumb position
+			_thumb.position = valueToThumbPosition(value);
+
+			if (value == _value) return;
+
+			_value = value;
+
+			dispatchChange();
 		}
 
 		private function thumbMoveHandler(event : Event) : void {
@@ -470,6 +490,6 @@ package com.sibirjak.asdpcbeta.slider {
 			
 			return rectangle;
 		}
-		
+
 	}
 }
