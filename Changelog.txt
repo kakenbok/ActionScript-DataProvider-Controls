@@ -1,5 +1,7 @@
 Version 0.4.1-snapshot - 2011-06-24
 
+- [Dev] Slider: Added property mouseWheelDelta to override the MouseEvent.delta which is a default OS property (usually = 3). mouseWheelDelta = 1 means scrolling of 1 * snapInterval. 3 = 3 snapInterval (now default)
+
 - [Bug][Slider] Setting value, minValue or maxValue to the slider could cause infinite loops. Added equality check.
 
 - [Bug][ListItemRenderer] ListItemRenderer did not call cleanUp on the list item content.
