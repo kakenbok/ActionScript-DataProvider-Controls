@@ -36,7 +36,8 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 	 */
 	public class SwatchChart extends View {
 		
-		public static var style_itemSize : String = "swatchChart_itemSize";
+		public static var style_itemWidth : String = "swatchChart_itemWidth";
+		public static var style_itemHeight : String = "swatchChart_itemHeight";
 		public static var style_numItemsPerRow : String = "swatchChart_numItemsPerRow";
 
 		private var _numItems : uint;
@@ -54,7 +55,8 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 		public function SwatchChart() {
 			
 			setDefaultStyles([
-				style_itemSize, 10,
+				style_itemWidth, 10,
+				style_itemHeight, 10,
 				style_numItemsPerRow, 0
 			]);
 			
@@ -107,7 +109,7 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 			}
 			
 		}
-
+		
 		/*
 		 * View life cycle
 		 */
@@ -121,8 +123,8 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 			
 			_grid = new GridLayout();
 			_grid.setStyles([
-				GridLayout.style.itemWidth, getStyle(style_itemSize),
-				GridLayout.style.itemHeight, getStyle(style_itemSize),
+				GridLayout.style.itemWidth, getStyle(style_itemWidth),
+				GridLayout.style.itemHeight, getStyle(style_itemHeight),
 				GridLayout.style.numItemsPerRow, getStyle(style_numItemsPerRow)
 			]);
 			addSwatches();
@@ -130,13 +132,13 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 
 			// selected swatch border
 			
-			_selectedIconBorder = new ColorSwatchBorder(getStyle(style_itemSize), getStyle(style_itemSize), 0xFFFF00);
+			_selectedIconBorder = new ColorSwatchBorder(getStyle(style_itemWidth), getStyle(style_itemHeight), 0xFFFF00);
 			addChild(_selectedIconBorder);
 			_selectedIconBorder.visible = false;
 			
 			// swatch border
 			
-			_iconBorder = new ColorSwatchBorder(getStyle(style_itemSize), getStyle(style_itemSize));
+			_iconBorder = new ColorSwatchBorder(getStyle(style_itemWidth), getStyle(style_itemHeight));
 			addChild(_iconBorder);
 			_iconBorder.visible = false;
 			
@@ -191,20 +193,21 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 		 */
 
 		private function addSwatches() : void {
-			var itemSize : uint = getStyle(style_itemSize);
-
+			var itemWidth : uint = getStyle(style_itemWidth);
+			var itemHeight : uint = getStyle(style_itemHeight);
+			
 			var colorSwatch : ColorSwatch;
 		
 			for (var i : int = 0; i < _dataProvider.size; i++) {
 				var color : uint = _dataProvider.itemAt(i);
-				colorSwatch = new ColorSwatch(color, itemSize, itemSize);
+				colorSwatch = new ColorSwatch(color, itemWidth, itemHeight, i);
 				_grid.addChild(colorSwatch);
 				_colorSwatchMap[color] = colorSwatch;
 			}
 			
 			if (_numItems) {
 				for (i = i; i < _numItems; i++) {
-					colorSwatch = new ColorSwatch(-1, itemSize, itemSize);
+					colorSwatch = new ColorSwatch(-1, itemWidth, itemHeight, i);
 					_grid.addChild(colorSwatch);
 				}
 			}

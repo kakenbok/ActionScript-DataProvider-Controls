@@ -22,6 +22,7 @@
  * THE SOFTWARE.
  */
 package com.sibirjak.asdpcbeta.colorpicker.core {
+
 	import com.sibirjak.asdpc.button.Button;
 	import com.sibirjak.asdpc.button.ButtonEvent;
 	import com.sibirjak.asdpc.button.IButton;
@@ -31,6 +32,7 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 	import com.sibirjak.asdpc.textfield.TextInput;
 	import com.sibirjak.asdpc.textfield.TextInputEvent;
 
+	import org.as3commons.collections.ArrayList;
 	import org.as3commons.collections.LinkedSet;
 
 	import flash.display.DisplayObject;
@@ -42,19 +44,23 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 	public class ColorPickerWindowContent extends View {
 
 		/* properties */
-		private var _colorPickerWindow : ColorPickerWindow;
+		protected var _colorPickerWindow : ColorPickerWindow;
 		private var _colorToSelect : uint;
 
 		/* internal */
 		private var _history : LinkedSet;
 		
 		/* children */
-		private var _paletteButton : IButton;
+		protected var _paletteButton : IButton;
 		private var _customChart : SwatchChart;
 		private var _selectedPreview : ColorPreview;
-		private var _preview : ColorPreview;
+		protected var _preview : ColorPreview;
 		private var _colorInput : ITextInput;
-		private var _colorChart : SwatchChart;
+		protected var _colorChart : SwatchChart;
+		
+		protected var _colorChartSwatchWidth : uint = 10;
+		protected var _colorChartSwatchHeight : uint = 10;
+		protected var _colorChartItemsPerRow : uint = 25;
 		
 		/* asssets */
 		[Embed(source="../assets/color_swatch.png")]
@@ -76,6 +82,8 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 				_colorToSelect = color;
 				return;
 			}
+			
+			onWillSetColor(color);
 
 			addToHistory(color);
 			_selectedPreview.color = color;
@@ -84,20 +92,20 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 			
 			_colorChart.selectColor(color);
 		}
-		
+
 		public function notifyColorRollOver(color : uint) : void {
 			previewColor(color);
-			_colorPickerWindow.colorPicker.notifyColorRollOver(color);
+			onColorRollOver(_preview.color);
 		}
 
 		public function notifyColorClick() : void {
 			selectColor(_preview.color);
-			_colorPickerWindow.colorPicker.notifyColorSelected(_preview.color);
+			onColorSelected(_preview.color);
 		}
 
 		public function notifyColorReset() : void {
 			selectColor(_selectedPreview.color);
-			_colorPickerWindow.colorPicker.notifyColorRollOver(_selectedPreview.color);
+			onColorRollOver(_selectedPreview.color);
 		}
 
 		/*
@@ -199,11 +207,17 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 
 			_colorChart = new SwatchChart();
 			_colorChart.colorPickerWindowContent = this;
-			_colorChart.setStyle(SwatchChart.style_numItemsPerRow, 25);
-			_colorChart.dataSource = Palette.palette();
+			_colorChart.setStyle(SwatchChart.style_numItemsPerRow, _colorChartItemsPerRow);
+			_colorChart.setStyle(SwatchChart.style_itemWidth, _colorChartSwatchWidth);
+			_colorChart.setStyle(SwatchChart.style_itemHeight, _colorChartSwatchHeight);
+			_colorChart.dataSource = getPalette();
 			_colorChart.selectColor(_colorToSelect);
 			_colorChart.moveTo(0, 26);
 			addChild(_colorChart);
+			
+			// additional elements
+
+			drawAdditionalElements();
 			
 			// select
 			
@@ -218,15 +232,33 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 			_paletteButton.removeEventListener(ButtonEvent.SELECTION_CHANGED, paletteButtonChangedHandler);
 		}
 
+		protected function getPalette() : ArrayList {
+			return Palette.palette();
+		}
+		
+		protected function drawAdditionalElements() : void {
+		}
+		
+		protected function onWillSetColor(color : uint) : void {
+		}
+		
 		/*
 		 * Private
 		 */
 		
+		private function onColorSelected(color : uint) : void {
+			_colorPickerWindow.colorPicker.notifyColorSelected(color);
+		}
+
+		private function onColorRollOver(color : uint) : void {
+			_colorPickerWindow.colorPicker.notifyColorRollOver(color);
+		}
+
 		private function addToHistory(color : uint) : void {
 			_history.remove(color);
 			_history.add(color);
 			
-			if (_history.size == 17) {
+			if (_history.size == 15) {
 				_history.removeFirst();
 			}
 			
@@ -242,7 +274,7 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 			var text : String = TextInput(event.currentTarget).text;
 			if (!text) text = "0";
 			_preview.color = Number("0x" + text);
-			_colorPickerWindow.colorPicker.notifyColorRollOver(_preview.color);
+			onColorRollOver(_preview.color);
 		}
 
 		private function colorInputSubmitHandler(event : TextInputEvent) : void {
@@ -250,14 +282,14 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 			if (!text) text = "0";
 			var color : uint = Number("0x" + text);
 			selectColor(color);
-			_colorPickerWindow.colorPicker.notifyColorSelected(color);
+			onColorSelected(color);
 		}
 
 		private function paletteButtonChangedHandler(event : ButtonEvent) : void {
 			if (_paletteButton.selected) {
 				_colorChart.dataSource = Palette.webPalette();
 			} else {
-				_colorChart.dataSource = Palette.palette();
+				_colorChart.dataSource = getPalette();
 			}
 		}
 		

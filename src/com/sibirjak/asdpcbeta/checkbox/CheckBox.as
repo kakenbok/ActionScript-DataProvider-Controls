@@ -44,6 +44,7 @@ package com.sibirjak.asdpcbeta.checkbox {
 		
 		private var _iconLabelContainer : Sprite;
 		private var _iconLabel : DisplayObject;
+		private var _value : *;
 
 		public function CheckBox() {
 			
@@ -94,6 +95,14 @@ package com.sibirjak.asdpcbeta.checkbox {
 				_iconLabel.x = buttonWidth + labelPadding;
 				DisplayObjectAdapter.addChild(_iconLabel, _iconLabelContainer);
 			}
+		}
+
+		public function set value(value : *) : void {
+			_value = value;
+		}
+
+		public function get value() : * {
+			return _value;
 		}
 
 		override protected function init() : void {

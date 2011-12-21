@@ -68,6 +68,7 @@ package com.sibirjak.asdpcbeta.selectbox {
 
 		/* constants */
 		public static const UPDATE_PROPERTY_DATA_SOURCE : String = "data_source";
+		public static const UPDATE_PROPERTY_ENABLED : String = "enabled";
 		public static const BINDABLE_PROPERTY_SELECTED_ITEM : String = "selectedItem";
 
 		/* properties */
@@ -77,6 +78,7 @@ package com.sibirjak.asdpcbeta.selectbox {
 		private var _indexToSelect : int = -1;
 		private var _indexToScroll : int = -1;
 		private var _liveSelecting : Boolean = false;
+		private var _enabled : Boolean = true;
 
 		/* children */
 		protected var _skin : DisplayObject;
@@ -114,9 +116,12 @@ package com.sibirjak.asdpcbeta.selectbox {
 				
 				style.button, true,
 				style.buttonClass, Button,
+				style.openIcon, true,
 
 				style.borderLightColor, 0xCCCCCC,
 				style.borderDarkColor, 0x666666,
+				style.disabledBorderLightColor, 0xCCCCCC,
+				style.disabledBorderDarkColor, 0xCCCCCC,
 				
 				style.labelBackground, true,
 				style.labelBorder, true,
@@ -179,6 +184,15 @@ package com.sibirjak.asdpcbeta.selectbox {
 			_liveSelecting = liveSelecting;
 		}
 		
+		public function set enabled(enabled : Boolean) : void {
+			_enabled = enabled;
+			invalidateProperty(UPDATE_PROPERTY_ENABLED);
+		}
+
+		public function get enabled() : Boolean {
+			return _enabled;
+		}
+
 		public function get numItems() : uint {
 			if (!_initialised) return 0;
 			return _popUp.list.numItems;
@@ -227,14 +241,15 @@ package com.sibirjak.asdpcbeta.selectbox {
 		}
 
 		override protected function draw() : void {
-			var lightColor : uint = getStyle(style.borderLightColor);
-			var darkColor : uint = getStyle(style.borderDarkColor);
+			var lightColor : uint = _enabled ? getStyle(style.borderLightColor) : getStyle(style.disabledBorderLightColor);
+			var darkColor : uint = _enabled ? getStyle(style.borderDarkColor) : getStyle(style.disabledBorderDarkColor);
 			
 			/* Trigger button */
 
 			var buttonClass : Class = getStyle(style.buttonClass);
 			_button = new buttonClass();
 			_button.setSize(_buttonSize, _height);
+			_button.enabled = _enabled;
 			
 			_button.setStyles([
 				ButtonSkin.style_borderColors, [lightColor, darkColor]
@@ -254,12 +269,12 @@ package com.sibirjak.asdpcbeta.selectbox {
 			DisplayObjectAdapter.addChild(_openIcon, this);
 			
 			_button.visible = getStyle(style.button);
-			_openIcon.visible = getStyle(style.button);
+			_openIcon.visible = getStyle(style.button) && getStyle(style.openIcon);
 			
 			/* Label */
 			
 			_label = new Label();
-			_label.setSize(_width - _buttonSize + 2, _height);
+			_label.setSize(_width - _buttonSize + 2 - _label.x, _height);
 			_label.setStyles([
 				Label.style.verticalAlign, Position.MIDDLE,
 				Label.style.background, getStyle(style.labelBackground),
@@ -344,11 +359,21 @@ package com.sibirjak.asdpcbeta.selectbox {
 
 				updatePopUpSize = true;
 			}
+			
+			if (isInvalid(UPDATE_PROPERTY_ENABLED)) {
+				_button.enabled = _enabled;
+
+				var lightColor : uint = _enabled ? getStyle(style.borderLightColor) : getStyle(style.disabledBorderLightColor);
+				var darkColor : uint = _enabled ? getStyle(style.borderDarkColor) : getStyle(style.disabledBorderDarkColor);
+				_label.setStyles([
+					Label.style.borderLightColor, darkColor, // swap label colors with label for a convex effect
+					Label.style.borderDarkColor, lightColor
+				]);
+			}
 
 			if (updatePopUpSize) {
 				setPopUpSize(_dataSourceAdapter.size);
 			}
-
 		}
 
 		override protected function initialised() : void {
@@ -474,6 +499,8 @@ package com.sibirjak.asdpcbeta.selectbox {
 		}
 
 		private function labelClickHandler(event : MouseEvent) : void {
+			if (!_enabled) return;
+			
 			_button.selected = !_button.selected;
 			showList(_button.selected);
 		}

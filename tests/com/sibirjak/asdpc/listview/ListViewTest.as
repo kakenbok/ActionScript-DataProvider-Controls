@@ -33,11 +33,6 @@ package com.sibirjak.asdpc.listview {
 	import org.as3commons.collections.ArrayList;
 	import org.as3commons.collections.fx.ArrayListFx;
 
-	import mx.core.Application;
-	import mx.core.FlexGlobals;
-
-	import flash.events.Event;
-
 	/**
 	 * @author jes 28.10.2009
 	 */
@@ -69,23 +64,12 @@ package com.sibirjak.asdpc.listview {
 		}
 		
 		private function addToStage(testFunction : Function) : void {
-			if (!Application(FlexGlobals.topLevelApplication).stage) {
-				Application(FlexGlobals.topLevelApplication).addEventListener(
-					Event.ADDED_TO_STAGE, addAsync(addedToStage, 50, testFunction)
-				);
-			} else {
-				addedToStage(new Event("nix"), testFunction);
-			}
-		}
-		
-		private function addedToStage(event : Event, testFunction : Function) : void {
-			Application(FlexGlobals.topLevelApplication).stage.addChild(_listView);
+			TestStageProxy.stage.addChild(_listView);
 			_added = true;
-			testFunction();
 		}
 
 		override public function tearDown() : void {
-			Application(FlexGlobals.topLevelApplication).stage.removeChild(_listView);
+			TestStageProxy.stage.removeChild(_listView);
 		}
 		
 		/**

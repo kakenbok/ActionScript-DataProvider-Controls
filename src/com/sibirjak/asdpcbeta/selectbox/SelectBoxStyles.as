@@ -38,9 +38,12 @@ package com.sibirjak.asdpcbeta.selectbox {
 		
 		public const button : String = "selectBox_button";
 		public const buttonClass : String = "selectBox_buttonClass";
+		public const openIcon : String = "selectBox_openIcon";
 
 		public const borderLightColor : String = "selectBox_borderLightColor";
 		public const borderDarkColor : String = "selectBox_borderDarkColor";
+		public const disabledBorderLightColor : String = "selectBox_disabledBorderLightColor";
+		public const disabledBorderDarkColor : String = "selectBox_disabledBorderDarkColor";
 
 		public const labelBorder : String = "selectBox_labelBorder";
 		public const labelBackground : String = "selectBox_labelBackground";

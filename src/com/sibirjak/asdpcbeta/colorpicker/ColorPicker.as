@@ -72,8 +72,10 @@ package com.sibirjak.asdpcbeta.colorpicker {
 		}
 		
 		public function set selectedColor(selectedColor : uint) : void {
+			if (selectedColor == _selectedColor) return;
 			_selectedColor = selectedColor;
 			colorize();
+			updateBindingsForProperty(BINDABLE_PROPERTY_SELECTED_COLOR);
 		}
 		
 		public function set liveChoosing(liveChoosing : Boolean) : void {
@@ -155,12 +157,12 @@ package com.sibirjak.asdpcbeta.colorpicker {
 
 		override protected function onSelectionChanged() : void {
 
-			var popUp : ColorPickerWindow = ColorPickerWindow.getInstance();
+			var popUp : ColorPickerWindow = getColorPickerWindow();
 			
 			if (selected) {
 				
 				// popup reopened during a minimise tween
-				if (!_popUp) _popUp = ColorPickerWindow.getInstance();
+				if (!_popUp) _popUp = popUp;
 				
 				/*
 				 * Position
@@ -205,6 +207,10 @@ package com.sibirjak.asdpcbeta.colorpicker {
 			} else {
 				popUp.minimise();
 			}
+		}
+		
+		protected function getColorPickerWindow() : ColorPickerWindow {
+			return ColorPickerWindow.getInstance();
 		}
 		
 		/*

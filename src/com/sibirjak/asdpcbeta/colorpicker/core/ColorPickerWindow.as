@@ -46,8 +46,6 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 
 		public function ColorPickerWindow() {
 			
-			_width = 269;
-			_height = 205;
 			_width = 265;
 			_height = 201;
 			
@@ -70,7 +68,7 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 			
 			minimiseOnClickOutside = true;
 			
-			document = new ColorPickerWindowContent(this);
+			document = createWindowContent();
 		}
 		
 		public function set colorPicker(colorPicker : ColorPicker) : void {
@@ -91,6 +89,10 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 
 		override protected function onMinimise() : void {
 			_colorPicker = null;
+		}
+		
+		protected function createWindowContent() : ColorPickerWindowContent {
+			return new ColorPickerWindowContent(this);
 		}
 		
 	}

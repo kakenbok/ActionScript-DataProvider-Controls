@@ -31,10 +31,12 @@ package com.sibirjak.asdpcbeta.colorpicker.core {
 
 		public var color : int;
 		public var hex : String;
+		public var index : int;
 		
-		public function ColorSwatch(theColor : int, width : uint, height : uint) {
+		public function ColorSwatch(theColor : int, width : uint, height : uint, theIndex : uint) {
 			color = theColor;
 			hex = ColorUtil.hexToString(color, false);
+			index = theIndex;
 	
 			with (graphics) {
 				if (color > -1) {

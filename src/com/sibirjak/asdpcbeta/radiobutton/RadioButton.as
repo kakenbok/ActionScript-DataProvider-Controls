@@ -32,8 +32,6 @@ package com.sibirjak.asdpcbeta.radiobutton {
 	 */
 	public class RadioButton extends CheckBox implements IRadioButton {
 		
-		private var _value : *;
-
 		public function RadioButton() {
 			setDefaultStyles([
 			
@@ -56,12 +54,5 @@ package com.sibirjak.asdpcbeta.radiobutton {
 			return !selected;
 		}
 		
-		public function get value() : * {
-			return _value;
-		}
-		
-		public function set value(value : *) : void {
-			_value = value;
-		}
 	}
 }

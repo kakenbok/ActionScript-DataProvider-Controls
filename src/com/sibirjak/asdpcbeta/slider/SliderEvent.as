@@ -30,11 +30,12 @@ package com.sibirjak.asdpcbeta.slider {
 	public class SliderEvent extends Event {
 
 		public static var CHANGE : String = "slider_change";
+		public static var RELEASE : String = "slider_release";
 
 		private var _value : Number;
 
-		public function SliderEvent(value : Number) {
-			super(CHANGE);
+		public function SliderEvent(type : String, value : Number) {
+			super(type);
 
 			_value = value;
 		}

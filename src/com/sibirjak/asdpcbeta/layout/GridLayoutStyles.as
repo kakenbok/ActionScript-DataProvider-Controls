@@ -28,9 +28,9 @@ package com.sibirjak.asdpcbeta.layout {
 	 */
 	public class GridLayoutStyles extends LayoutStyles {
 
-		public const itemWidth : String = "gridLayout_itemPadding";
+		public const itemWidth : String = "gridLayout_itemWidth";
 
-		public const itemHeight : String = "gridLayout_itemPadding";
+		public const itemHeight : String = "gridLayout_itemHeight";
 
 		public const numItemsPerRow : String = "gridLayout_numItemsPerRow";
 

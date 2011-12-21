@@ -319,6 +319,7 @@ package com.sibirjak.asdpcbeta.slider {
 			_value = value;
 
 			dispatchChange();
+			dispatchEvent(new SliderEvent(SliderEvent.RELEASE, _value));
 		}
 
 		private function thumbMoveHandler(event : Event) : void {
@@ -340,6 +341,7 @@ package com.sibirjak.asdpcbeta.slider {
 			if (!_liveDragging) {
 				dispatchChange();
 			}
+			dispatchEvent(new SliderEvent(SliderEvent.RELEASE, _value));
 		}
 
 		private function snapValue(value : Number) : Number {
@@ -383,7 +385,7 @@ package com.sibirjak.asdpcbeta.slider {
 		
 		private function dispatchChange() : void {
 			updateBindingsForProperty(BINDABLE_PROPERTY_VALUE);
-			dispatchEvent(new SliderEvent(_value));
+			dispatchEvent(new SliderEvent(SliderEvent.CHANGE, _value));
 		}
 		
 		/*

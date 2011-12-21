@@ -33,7 +33,7 @@
 		<delete dir="${DOC}/apidoc" failonerror="false" />
 	</target>
 
-	<target name="APIDoc" depends="Clean">
+	<target name="APIDoc" depends="Clean" description="Apidoc">
 		<exec executable="${ASDOC}" failonerror="true">
 			<arg line="-doc-sources 'src/com/sibirjak/asdpc'" />
 			<arg line="-source-path '${SRC}'" />

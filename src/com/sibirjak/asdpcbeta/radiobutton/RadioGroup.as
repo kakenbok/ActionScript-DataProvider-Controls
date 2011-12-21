@@ -111,11 +111,16 @@ package com.sibirjak.asdpcbeta.radiobutton {
 		private function buttonSelectionChangeHandler(event : ButtonEvent) : void {
 			var button : IRadioButton = event.currentTarget as IRadioButton;
 			
-			if (_selectedButton) _selectedButton.selected = false;
-			button.selected = true;
-			_selectedButton = button;
+			if (button.selected) {
+				if (_selectedButton) _selectedButton.selected = false;
+				_selectedButton = button;
+			} else {
+				_selectedButton = null;
+			}
 			
 			_bindingManager.updateBindingsForProperty(BINDABLE_PROPERTY_SELECTED_VALUE);
+			
+			dispatchEvent(new RadioGroupEvent(RadioGroupEvent.CHANGE, selectedValue));
 		}
 		
 		public function get selectedValue() : * {
@@ -124,15 +129,27 @@ package com.sibirjak.asdpcbeta.radiobutton {
 		}
 
 		public function set selectedValue(value : *) : void {
+			// deselect everything by passing null
+			if (value == null && _selectedButton) {
+				_selectedButton.selected = false;
+				_selectedButton = null;
+				return;
+			}
+			
+			// value not specified - do nothing
 			if (!_valueButtonMap.hasKey(value)) return;
+
+			// value already selected
 			if (_selectedButton && _selectedButton.value == value) return;
 
+			// deselect current selection
 			if (_selectedButton) _selectedButton.selected = false;
+			// select new button
 			_selectedButton = _valueButtonMap.itemFor(value);
 			_selectedButton.selected = true;
 			
+			// update bindings
 			_bindingManager.updateBindingsForProperty(BINDABLE_PROPERTY_SELECTED_VALUE);
-
 		}
 
 	}

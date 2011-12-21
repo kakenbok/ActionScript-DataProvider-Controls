@@ -2,11 +2,13 @@
 <mx:Application
 	xmlns:mx="http://www.adobe.com/2006/mxml"
 	xmlns:flexui="flexunit.flexui.*"
-	creationComplete="startTests();">
+	applicationComplete="startTests();">
 
     <mx:Script>
         <![CDATA[
             private function startTests() : void {
+				TestStageProxy.stage = stage;
+
                 testRunner.test = AllTests.getAllTests();
                 testRunner.startTest();
             }
