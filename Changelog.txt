@@ -1,4 +1,16 @@
-Version 0.4.1-snapshot - 2011-06-24
+Version 0.4.1-snapshot - 2011-12-21
+
+- [Dev] Slider - Dispatches event if the thumb has been released.
+
+- [Bug] ColorPicker - Binding fires after selecting color programmatically.
+
+- [Dev] CheckBox - Added value property.
+
+- [Dev] SelectBox - Added disabled state and appropriate styles.
+
+- [Dev] SelectBox - Added possibility to hide the open icon.
+
+- [Dev] RadioGroup - Added event additionally to the already provided binding mechanism.
 
 - [Dev] Slider: Added property mouseWheelDelta to override the MouseEvent.delta which is a default OS property (usually = 3). mouseWheelDelta = 1 means scrolling of 1 * snapInterval. 3 = 3 snapInterval (now default)
 
@@ -8,6 +20,7 @@ Version 0.4.1-snapshot - 2011-06-24
 
 - [Bug][DisplayObjectAdapter] CleanUp method did not work at all.
 
+- [Project] Update to as3commons-collections-1.3.2
 
 
 Version 0.4.0 - 2011-05-20
